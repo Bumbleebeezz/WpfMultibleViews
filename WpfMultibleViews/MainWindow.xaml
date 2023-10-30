@@ -9,7 +9,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    FontSize="30"
+    FontSize="20"
     mc:Ignorable="d">
     <Grid>
         <TabControl>

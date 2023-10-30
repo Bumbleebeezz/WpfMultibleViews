@@ -24,6 +24,11 @@ namespace WpfMultibleViews.Views
     {
         public ObservableCollection<PersonModel> PeopleList { get; set; } = new();
 
+        public PersonModel? SelectedPerson { get; set; } = new ();
+
+        public string EditFirstName { get; set; } = string.Empty;
+        public string EditLastName { get; set; } = string.Empty;
+
         public PeopleView()
         {
             InitializeComponent();
@@ -34,6 +39,29 @@ namespace WpfMultibleViews.Views
             PeopleList.Add(new PersonModel() { FirstName = "Maria", LastName = "Edström" });
             PeopleList.Add(new PersonModel() { FirstName = "Eva", LastName = "Edström" });
             PeopleList.Add(new PersonModel() { FirstName = "Bengt", LastName = "Edström" });
+        }
+
+        private void UpdateBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (SelectedPerson is null)
+            {
+                return;
+            }
+
+            SelectedPerson.FirstName = EditFirstName;
+            SelectedPerson.LastName = EditLastName;
+        }
+
+        private void AddBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var addPerson = new PersonModel() { FirstName = EditFirstName, LastName = EditLastName };
+            PeopleList.Add(addPerson);
+        }
+
+        private void RemoveBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var removePerson = PeopleList.Where(p => p.FirstName == FirstNameTxtB.Text);
+            PeopleList.Remove(removePerson.FirstOrDefault());
         }
     }
 }
