@@ -54,14 +54,25 @@ namespace WpfMultibleViews.Views
 
         private void AddBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var addPerson = new PersonModel() { FirstName = EditFirstName, LastName = EditLastName };
-            PeopleList.Add(addPerson);
+            PeopleList.Add(new PersonModel() 
+            { 
+                FirstName = EditFirstName, 
+                LastName = EditLastName
+            });
         }
 
         private void RemoveBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var removePerson = PeopleList.Where(p => p.FirstName == FirstNameTxtB.Text);
+            var removePerson = PeopleList.Where(
+                p => p.FirstName == FirstNameTxtB.Text 
+                     && 
+                     p.LastName == LastNameTxtb.Text
+                     );
             PeopleList.Remove(removePerson.FirstOrDefault());
+
+            if (SelectedPerson is null){ return;}
+
+            PeopleList.Remove(SelectedPerson);
         }
     }
 }
