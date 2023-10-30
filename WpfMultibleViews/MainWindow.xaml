@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WpfMultibleViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:WpfMultibleViews.Views"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -33,23 +34,8 @@
             Foreground="BlanchedAlmond" 
             TextAlignment="Center"
             Text="Counter"/>
-        <Button
-            Name="DecreaseBtn"
-            Click="DecreaseBtn_OnClick"
-            Grid.Row="2"
-            Grid.Column="1"
-            Content="Decrease" />
-        <Button
-            Name="ClearBtn"
-            Click="ClearBtn_OnClick"
-            Grid.Row="2"
-            Grid.Column="2"
-            Content="Clear" />
-        <Button
-            Name="IncreaseBtn"
-            Click="IncreaseBtn_OnClick"
-            Grid.Row="2"
-            Grid.Column="3"
-            Content="Increase" />
+        <views:DecreaseView Grid.Row="2" Grid.Column="1"></views:DecreaseView>
+        <views:ClearView Grid.Row="2" Grid.Column="2"></views:ClearView>
+        <views:IncreaseView Grid.Row="2" Grid.Column="3"></views:IncreaseView>
     </Grid>
 </Window>
