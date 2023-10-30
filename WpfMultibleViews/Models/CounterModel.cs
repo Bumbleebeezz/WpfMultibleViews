@@ -1,4 +1,6 @@
-﻿namespace WpfMultibleViews.Models;
+﻿using System;
+
+namespace WpfMultibleViews.Models;
 
 public class CounterModel
 {
@@ -7,7 +9,8 @@ public class CounterModel
 	public int Counter	
 	{
 		get { return _counter; }
-		set { _counter = value; }
+		set { _counter = value; CounterChanged.Invoke(); }
 	}
 
+    public event Action CounterChanged;
 }

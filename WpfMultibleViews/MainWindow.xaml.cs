@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using WpfMultibleViews.Managers;
-using WpfMultibleViews.Models;
 
 namespace WpfMultibleViews
 {
@@ -9,10 +7,16 @@ namespace WpfMultibleViews
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
+
+            
+
+        }
+
+        private void CounterView_Loaded(object sender, RoutedEventArgs e)
+        {
 
         }
     }
