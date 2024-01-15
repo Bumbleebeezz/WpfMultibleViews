@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMultibleViews", "WpfMultibleViews\WpfMultibleViews.csproj", "{18A6E9E2-6259-42C0-985E-9EFE02D0CBA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfMultibleViews", "WpfMultibleViews\WpfMultibleViews.csproj", "{18A6E9E2-6259-42C0-985E-9EFE02D0CBA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{BB1B720D-959E-4B05-AB57-5B13ED6D9E7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{97C3F461-352D-41C2-9120-450976B3613D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{18A6E9E2-6259-42C0-985E-9EFE02D0CBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18A6E9E2-6259-42C0-985E-9EFE02D0CBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18A6E9E2-6259-42C0-985E-9EFE02D0CBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1B720D-959E-4B05-AB57-5B13ED6D9E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1B720D-959E-4B05-AB57-5B13ED6D9E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1B720D-959E-4B05-AB57-5B13ED6D9E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1B720D-959E-4B05-AB57-5B13ED6D9E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97C3F461-352D-41C2-9120-450976B3613D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97C3F461-352D-41C2-9120-450976B3613D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97C3F461-352D-41C2-9120-450976B3613D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97C3F461-352D-41C2-9120-450976B3613D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

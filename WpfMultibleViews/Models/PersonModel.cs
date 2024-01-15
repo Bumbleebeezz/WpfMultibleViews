@@ -6,6 +6,8 @@ namespace WpfMultibleViews.Models;
 
 public class PersonModel : INotifyPropertyChanged
 {
+    public string ID { get; set; }
+
 	private string _firstName;
 
 	public string FirstName	

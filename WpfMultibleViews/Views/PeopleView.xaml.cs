@@ -1,31 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Common.DTOs;
+using DataAccess.Services;
 using WpfMultibleViews.Models;
 
 namespace WpfMultibleViews.Views
 {
-    /// <summary>
-    /// Interaction logic for PeopleView.xaml
-    /// </summary>
     public partial class PeopleView : UserControl
     {
+        private readonly PeopleRepository _peopleRepository;
+
         public ObservableCollection<PersonModel> PeopleList { get; set; } = new();
-
         public PersonModel? SelectedPerson { get; set; } = new ();
-
         public string EditFirstName { get; set; } = string.Empty;
         public string EditLastName { get; set; } = string.Empty;
 
@@ -36,9 +24,23 @@ namespace WpfMultibleViews.Views
             // Set data context
             DataContext = this;
 
+            _peopleRepository = new PeopleRepository();
+
             PeopleList.Add(new PersonModel() { FirstName = "Maria", LastName = "Edström" });
             PeopleList.Add(new PersonModel() { FirstName = "Eva", LastName = "Edström" });
             PeopleList.Add(new PersonModel() { FirstName = "Bengt", LastName = "Edström" });
+
+            var allPeople = _peopleRepository.GetAllPeople();
+            foreach (var person in allPeople)
+            {
+                PeopleList.Add(new PersonModel()
+                    {
+                        ID = person.ID, 
+                        FirstName = person.FirstName,
+                        LastName = person.LastName
+
+                    });
+            }
         }
 
         private void UpdateBtn_OnClick(object sender, RoutedEventArgs e)
@@ -50,6 +52,8 @@ namespace WpfMultibleViews.Views
 
             SelectedPerson.FirstName = EditFirstName;
             SelectedPerson.LastName = EditLastName;
+
+            _peopleRepository.UpdatePersonLastname(SelectedPerson.ID,EditLastName);
         }
 
         private void AddBtn_OnClick(object sender, RoutedEventArgs e)
@@ -59,6 +63,10 @@ namespace WpfMultibleViews.Views
                 FirstName = EditFirstName, 
                 LastName = EditLastName
             });
+
+            var personRecord = new PersonRecord("", EditFirstName,EditLastName);
+
+            _peopleRepository.AddPerson(personRecord);
         }
 
         private void RemoveBtn_OnClick(object sender, RoutedEventArgs e)
@@ -71,6 +79,8 @@ namespace WpfMultibleViews.Views
             PeopleList.Remove(removePerson.FirstOrDefault());
 
             if (SelectedPerson is null){ return;}
+
+            _peopleRepository.DeletePerson(SelectedPerson.ID);
 
             PeopleList.Remove(SelectedPerson);
         }
